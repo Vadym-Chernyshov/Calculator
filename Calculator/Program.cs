@@ -17,18 +17,24 @@
             {
                 Console.WriteLine("Choose a math operation +, -, * or /");
                 string operation = Console.ReadLine(); //ввід математичної операції
-
-                string resultOfOperetion = operation switch
+                if (operation == "/" && secondValue == 0) //операція перевірки ділення на нуль
                 {
-                    //конвертація числовго значення в рядок
-                    //https://learn.microsoft.com/ru-ru/dotnet/api/system.convert.tostring?view=net-8.0#system-convert-tostring(system-int32)
-                    "+" => Convert.ToString(firstValue + secondValue),
-                    "-" => Convert.ToString(firstValue - secondValue),
-                    "*" => Convert.ToString(firstValue * secondValue),
-                    "/" => Convert.ToString((float)firstValue / secondValue), //можуть бути нецілі, краще float
-                      _ => "Incorect operation. Please try again" 
-                };
-                Console.WriteLine(resultOfOperetion);
+                    Console.WriteLine("You cannot divide by zero");
+                }
+                else
+                {
+                    string resultOfOperetion = operation switch
+                    {
+                        //конвертація числовго значення в рядок
+                        //https://learn.microsoft.com/ru-ru/dotnet/api/system.convert.tostring?view=net-8.0#system-convert-tostring(system-int32)
+                        "+" => Convert.ToString(firstValue + secondValue),
+                        "-" => Convert.ToString(firstValue - secondValue),
+                        "*" => Convert.ToString(firstValue * secondValue),
+                        "/" => Convert.ToString((float)firstValue / secondValue), //можуть бути нецілі, краще float
+                        _ => "Incorect operation. Please try again"
+                    };
+                    Console.WriteLine(resultOfOperetion);
+                }      
             }
             else
             {
