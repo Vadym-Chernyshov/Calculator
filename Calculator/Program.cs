@@ -12,11 +12,11 @@
 
             try
             {
-                double resultF = 0; //ініціалізація результату
+                decimal resultF = 0; //ініціалізація результату
 
                 //конвертація вводу користувача
-                int firstValueInTry = Convert.ToInt32(strFirstValue);
-                int secondValueInTry = Convert.ToInt32(strSecondValue);
+                decimal firstValueInTry = Convert.ToDecimal(strFirstValue);
+                decimal secondValueInTry = Convert.ToDecimal(strSecondValue);
 
                 Console.WriteLine("Choose a math operation +, -, * or /");
                 string operation = Console.ReadLine(); //ввід математичної операції
@@ -24,30 +24,16 @@
                 switch (operation)
                 {
                     case "+":
-                        resultF = (double)firstValueInTry + secondValueInTry;                        
+                        resultF = firstValueInTry + secondValueInTry;                        
                         break;
                     case "-":
-                        resultF = (double)firstValueInTry - secondValueInTry;
+                        resultF = firstValueInTry - secondValueInTry;
                         break;
                     case "*":
-                        resultF = (double)firstValueInTry * secondValueInTry;
+                        resultF = firstValueInTry * secondValueInTry;
                         break;
-                    case "/":
-                        if (secondValueInTry == 0)
-                        {                            
-                            throw new DivideByZeroException();
-                            /* виключення DivideByZeroException нема
-                             * для числових значень з плаваючою точкою
-                             * (ділення на нуль буде давати нескінченість,
-                             * негативну нескінченість, або NaN)
-                             * тому я вирішив насильно викликати дане виключення
-                             * https://stackoverflow.com/questions/18809074/why-do-int-and-decimal-throw-dividebyzeroexception-but-floating-point-doesnt
-                             */
-                        }
-                        else
-                        {
-                            resultF = (double)firstValueInTry / secondValueInTry;
-                        }
+                    case "/":                                             
+                        resultF = firstValueInTry / secondValueInTry;                
                         break;
                      default:
                         Console.WriteLine("Упс...Неправильно введена операція");
